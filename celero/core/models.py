@@ -54,6 +54,9 @@ class NOC(models.Model):
 class City(models.Model):
     name = models.CharField(max_length=255)
 
+    class Meta:
+        verbose_name_plural = 'Cities'
+
 
 class Sport(models.Model):
     name = models.CharField(max_length=255)
@@ -68,8 +71,8 @@ class Athlete(models.Model):
     name = models.CharField(max_length=255)
     gender = models.CharField(max_length=1, choices=GenderChoices.choices())
     age = models.PositiveSmallIntegerField()
-    height = models.PositiveSmallIntegerField()
-    weight = models.PositiveSmallIntegerField()
+    height = models.PositiveSmallIntegerField(help_text="Measurement Unit - centimeters")
+    weight = models.PositiveSmallIntegerField(help_text="Measurement Unit - kilograms")
     noc = models.ForeignKey(NOC, on_delete=models.CASCADE)
 
 
@@ -82,7 +85,7 @@ class Olympics(models.Model):
         verbose_name_plural = 'Olympics'
 
 
-class Results(models.Model):
+class Result(models.Model):
     athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
     olympics = models.ForeignKey(Olympics, on_delete=models.CASCADE)
     sport = models.ForeignKey(Event, on_delete=models.CASCADE)
