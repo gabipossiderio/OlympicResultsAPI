@@ -3,6 +3,7 @@ from django.contrib import admin
 from core.models import (
     Athlete,
     City,
+    CSV,
     Event,
     NOC,
     Olympics,
@@ -19,3 +20,4 @@ admin.site.register(Olympics)
 admin.site.register(Region)
 admin.site.register(Result)
 admin.site.register(Sport)
+admin.site.register(CSV)
