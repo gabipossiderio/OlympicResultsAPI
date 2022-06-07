@@ -121,7 +121,9 @@ class Result(models.Model):
     medal = models.CharField(max_length=6, choices=MedalChoices.choices())
 
     def __str__(self):
-        return f'{self.athlete.name}, {self.olympics}, {self.event}, {self.medal}'
+        if self.medal:
+            return f'{self.athlete.name}, {self.olympics}, {self.event}, {self.medal}'
+        return f'{self.athlete.name}, {self.olympics}, {self.event}, No Medal'
 
 
 class CSV(models.Model):
