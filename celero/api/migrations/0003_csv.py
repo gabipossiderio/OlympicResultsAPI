@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0002_rename_results_result_alter_city_options_and_more'),
+        ('api', '0002_rename_results_result_alter_city_options_and_more'),
     ]
 
     operations = [
@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name='CSV',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('file_name', models.FileField(upload_to='core')),
+                ('file_name', models.FileField(upload_to='api')),
                 ('uploaded', models.DateTimeField(auto_now_add=True)),
                 ('activated', models.BooleanField(default=False)),
             ],

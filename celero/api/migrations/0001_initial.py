@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('season', models.CharField(choices=[('Summer', 'Summer'), ('Winter', 'Winter')], max_length=6)),
                 ('year', models.PositiveSmallIntegerField()),
-                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.city')),
+                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.city')),
             ],
             options={
                 'verbose_name_plural': 'Olympics',
@@ -68,9 +68,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('medal', models.CharField(choices=[('Bronze', 'Bronze'), ('Silver', 'Silver'), ('Gold', 'Gold'), ('NA', 'NA')], max_length=6)),
-                ('athlete', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.athlete')),
-                ('olympics', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.olympics')),
-                ('sport', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.event')),
+                ('athlete', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.athlete')),
+                ('olympics', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.olympics')),
+                ('sport', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.event')),
             ],
         ),
         migrations.CreateModel(
@@ -79,17 +79,17 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('noc', models.CharField(max_length=3, unique=True)),
                 ('notes', models.CharField(blank=True, max_length=255)),
-                ('region', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.region')),
+                ('region', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.region')),
             ],
         ),
         migrations.AddField(
             model_name='event',
             name='sport',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.sport'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.sport'),
         ),
         migrations.AddField(
             model_name='athlete',
             name='noc',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.noc'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.noc'),
         ),
     ]

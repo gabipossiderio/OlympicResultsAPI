@@ -127,7 +127,7 @@ class Result(models.Model):
 
 
 class CSV(models.Model):
-    file_name = models.FileField(upload_to='core/uploads')
+    file_name = models.FileField(upload_to='api/uploads')
     uploaded = models.DateTimeField(auto_now_add=True)
     activated = models.BooleanField(default=False)
 

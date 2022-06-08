@@ -1,11 +1,10 @@
 import numpy as np
 import pandas as pd
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 
-from core.api.v1.serializers import CsvReaderSerializer
-from core.models import (
+from api.models import (
     Athlete,
     City,
     Event,
@@ -16,10 +15,22 @@ from core.models import (
     Sport,
     Team,
 )
+from api.v1.serializers import (
+    AthleteSerializer,
+    CitySerializer,
+    CSVSerializer,
+    EventSerializer,
+    NOCSerializer,
+    OlympicsSerializer,
+    RegionSerializer,
+    ResultSerializer,
+    SportSerializer,
+    TeamSerializer,
+)
 
 
 class UploadRegionCsvView(GenericAPIView):
-    serializer_class = CsvReaderSerializer
+    serializer_class = CSVSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -47,7 +58,7 @@ class UploadRegionCsvView(GenericAPIView):
 
 
 class UploadResultsCsvView(GenericAPIView):
-    serializer_class = CsvReaderSerializer
+    serializer_class = CSVSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -194,3 +205,48 @@ class UploadResultsCsvView(GenericAPIView):
                 object.save()
 
         return Response(status=status.HTTP_201_CREATED)
+
+
+class RegionViewSet(viewsets.ModelViewSet):
+    queryset = Region.objects.all()
+    serializer_class = RegionSerializer
+
+
+class NOCViewSet(viewsets.ModelViewSet):
+    queryset = NOC.objects.all()
+    serializer_class = NOCSerializer
+
+
+class CityViewSet(viewsets.ModelViewSet):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+
+
+class SportViewSet(viewsets.ModelViewSet):
+    queryset = Sport.objects.all()
+    serializer_class = SportSerializer
+
+
+class EventViewSet(viewsets.ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
+
+class TeamViewSet(viewsets.ModelViewSet):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
+
+
+class AthleteViewSet(viewsets.ModelViewSet):
+    queryset = Athlete.objects.all()
+    serializer_class = AthleteSerializer
+
+
+class OlympicsViewSet(viewsets.ModelViewSet):
+    queryset = Olympics.objects.all()
+    serializer_class = OlympicsSerializer
+
+
+class ResultViewSet(viewsets.ModelViewSet):
+    queryset = Result.objects.all()
+    serializer_class = ResultSerializer

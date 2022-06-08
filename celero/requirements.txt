@@ -1,0 +1,14 @@
+asgiref==3.5.2
+Django==4.0.5
+django-filter==21.1
+djangorestframework==3.13.1
+iso8601==1.0.2
+Markdown==3.3.7
+numpy==1.22.4
+pandas==1.4.2
+python-dateutil==2.8.2
+pytz==2022.1
+row==0.1.0.dev3
+six==1.16.0
+sqlparse==0.4.2
+value==0.1.0

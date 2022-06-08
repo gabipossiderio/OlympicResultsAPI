@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0006_remove_athlete_age_athlete_date_of_birth'),
+        ('api', '0006_remove_athlete_age_athlete_date_of_birth'),
     ]
 
     operations = [
@@ -21,16 +21,16 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='csv',
             name='file_name',
-            field=models.FileField(upload_to='core/uploads'),
+            field=models.FileField(upload_to='api/uploads'),
         ),
         migrations.AlterField(
             model_name='noc',
             name='region',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='core.region'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='api.region'),
         ),
         migrations.AddField(
             model_name='athlete',
             name='team',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='core.team'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='api.team'),
         ),
     ]

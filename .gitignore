@@ -2,4 +2,4 @@
 *.csv*
 *.pyc
 .idea/
-db.sqlite3
+celero/db.sqlite3
